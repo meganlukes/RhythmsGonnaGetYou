@@ -18,6 +18,7 @@ namespace RhythmsGonnaGetYou
         public bool IsSigned { get; set; }
         public string ContactName { get; set; }
         public int ContactNumber { get; set; }
+        public List<Album> Albums { get; set; }
     }
     class Album
     {
@@ -27,6 +28,7 @@ namespace RhythmsGonnaGetYou
         public string Title { get; set; }
         public bool IsExplicit { get; set; }
         public DateTime ReleaseDate { get; set; }
+        public List<Song> Songs { get; set; }
     }
     class Song
     {
@@ -62,11 +64,20 @@ namespace RhythmsGonnaGetYou
             var userInputAsNumber = int.Parse(userInput);
             return userInputAsNumber;
         }
+        static float PromptForFloat(string prompt)
+        {
+            Console.Write(prompt);
+            var userInput = Console.ReadLine();
+            var userInputAsNumber = float.Parse(userInput);
+            return userInputAsNumber;
+        }
         static void Main(string[] args)
         {
             var context = new RhythmContext();
             var band = context.Bands;
             var album = context.Albums.Include(album => album.BandID);
+            var song = context.Songs.Include(song => song.AlbumID);
+
             /* var quitProgram = false;
              while (quitProgram == false)
              {
@@ -77,6 +88,28 @@ namespace RhythmsGonnaGetYou
                  switch (selection)
                  {
                      case 1:    //Add a new band
+                     var bandname = PromptForString("What is the new band's name?");
+                     var country = PromptForString($"What is {bandname}'s country of origin?");
+                     var members = PromptForInteger($"How many members does {bandname} have?");
+                     var website = PromptForString($"What is {bandname}'s website?");
+                     var style = PromptForString($"What style is {bandname}?");
+                     bool signed;
+                     signedint = 0;
+                     while (signedint != 1 && signedint != 2){
+                     Console.WriteLine($"Is {bandname} currently signed? 1 for yes, 2 for no.");
+                     signedint = Console.ReadLine();
+                     if (signedint = 1){
+                       signed == true;
+                     }
+                     else if (signedint = 2){
+                       signed == false;
+                     }
+                     else {
+                       Console.WriteLine("I'm sorry, I don't recognize that selection.");
+                     }
+                     }
+                     var contactname = PromptForString($"What is the name of the contact for {bandname}?");
+                     var contactnumber = 
 
                          break;
                      case 2:    //View all bands
