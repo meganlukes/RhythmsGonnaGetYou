@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 namespace RhythmsGonnaGetYou
 {
 
-    class Bands
+    class Band
     {
         public int ID { get; set; }
         public string Name { get; set; }
@@ -21,7 +21,7 @@ namespace RhythmsGonnaGetYou
     }
     class RhythmContext : DbContext
     {
-        public DbSet<Bands> Band { get; set; }
+        public DbSet<Band> Bands { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql("server=localhost;database=Rhythm");
@@ -45,7 +45,7 @@ namespace RhythmsGonnaGetYou
         static void Main(string[] args)
         {
             var context = new RhythmContext();
-            var band = context.Band;
+            var band = context.Bands;
             /* var quitProgram = false;
              while (quitProgram == false)
              {
@@ -59,11 +59,11 @@ namespace RhythmsGonnaGetYou
 
                          break;
                      case 2:    //View all bands
-                       */
+                       
             foreach (var bands in band)
             {
                 Console.WriteLine(bands.Name);
-            } /*
+            } 
                         break;
                     case 3:    //Add an album
                         break;
