@@ -19,9 +19,29 @@ namespace RhythmsGonnaGetYou
         public string ContactName { get; set; }
         public int ContactNumber { get; set; }
     }
+    class Album
+    {
+        public int ID { get; set; }
+        public int BandID { get; set; }
+        public Band Band { get; set; }
+        public string Title { get; set; }
+        public bool IsExplicit { get; set; }
+        public DateTime ReleaseDate { get; set; }
+    }
+    class Song
+    {
+        public int ID { get; set; }
+        public int AlbumID { get; set; }
+        public Album Album { get; set; }
+        public int TrackNumber { get; set; }
+        public string Title { get; set; }
+        public float Duration { get; set; }
+    }
     class RhythmContext : DbContext
     {
         public DbSet<Band> Bands { get; set; }
+        public DbSet<Album> Albums { get; set; }
+        public DbSet<Song> Songs { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql("server=localhost;database=Rhythm");
@@ -46,6 +66,7 @@ namespace RhythmsGonnaGetYou
         {
             var context = new RhythmContext();
             var band = context.Bands;
+            var album = context.Albums.Include(album => album.BandID);
             /* var quitProgram = false;
              while (quitProgram == false)
              {
@@ -60,11 +81,11 @@ namespace RhythmsGonnaGetYou
                          break;
                      case 2:    //View all bands
                        
-            foreach (var bands in band)
-            {
-                Console.WriteLine(bands.Name);
-            } 
-                        break;
+                      foreach (var bands in band)
+                      {
+                       Console.WriteLine(bands.Name);
+                       } 
+                      break;
                     case 3:    //Add an album
                         break;
                     case 4:   //Add a song
