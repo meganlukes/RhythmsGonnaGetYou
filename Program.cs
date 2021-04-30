@@ -145,13 +145,13 @@ namespace RhythmsGonnaGetYou
             var bandID = thisBand.ID;
             string stringExplicit = "f";
             stringExplicit = PromptForString("Is the album explicit? Y or N   ");
-            bool explicit == false;
-           if (stringExplicit == "Y")
+            bool explicit;
+            if (stringExplicit == "Y")
         {
-             explicit = true;
-           }
-           else if (stringExplicit == "N"){
-             explicit = false;
+             explicit == true;
+            }
+            else {
+               explicit == false;
            }
 var year = PromptForInteger("In what year was the album released?   ");
 var month = PromptForInteger("In what month was the album released? Use MM   ");
@@ -162,10 +162,11 @@ var newAlbum = new Album
     BandID = bandID;
 Title = title;
 IsExplicit = explicit;
-             ReleaseDate = releaseDate;
+                ReleaseDate = releaseDate;
            }
-           context.Albums.Add(newAlbum);
-context.SaveChanges(); /*
+            context.Albums.Add(newAlbum);
+context.SaveChanges(); 
+            /*
                break;
            case 4:   //Add a song
                break;
@@ -186,6 +187,4 @@ context.SaveChanges(); /*
                break; */
         }
    }
-
-        }
-    
+}
