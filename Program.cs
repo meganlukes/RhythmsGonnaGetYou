@@ -89,7 +89,8 @@ namespace RhythmsGonnaGetYou
                  var selection = PromptForInteger("");
                  switch (selection)
                  {
-                     case 1:    //Add a new band
+                     case 1:     
+            
                      
             var bandname = PromptForString("What is the new band's name?   ");
             var country = PromptForString($"What is {bandname}'s country of origin?   ");
@@ -138,34 +139,37 @@ namespace RhythmsGonnaGetYou
               Console.WriteLine(bands.Name);
               } 
              break;
-           case 3:    //Add an album */
+           case 3:    //Add an album 
+           */
             var title = PromptForString("What is the album's name?   ");
             var bandName = PromptForString("What is the band's name?   ");
             var thisBand = context.Bands.FirstOrDefault(band => band.Name == bandName);
             var bandID = thisBand.ID;
             string stringExplicit = "f";
             stringExplicit = PromptForString("Is the album explicit? Y or N   ");
-            bool explicit;
+            bool isexplicit = false;
             if (stringExplicit == "Y")
-        {
-             explicit == true;
+            {
+                isexplicit = true;
             }
-            else {
-               explicit == false;
-           }
-var year = PromptForInteger("In what year was the album released?   ");
-var month = PromptForInteger("In what month was the album released? Use MM   ");
-var day = PromptForInteger("On what day was the album released?   ")
-           var releaseDate = new DateTime(year, month, day);
-var newAlbum = new Album
-{
-    BandID = bandID;
-Title = title;
-IsExplicit = explicit;
-                ReleaseDate = releaseDate;
-           }
-            context.Albums.Add(newAlbum);
-context.SaveChanges(); 
+            else
+            {
+                isexplicit = false;
+            }
+
+            var year = PromptForInteger("In what year was the album released?   ");
+            var month = PromptForInteger("In what month was the album released? Use MM   ");
+            var day = PromptForInteger("On what day was the album released?   ");
+            var releaseDate = new DateTime(year, month, day);
+            var newAlbum = new Album
+            {
+                BandID = bandID;
+            Title = title;
+            IsExplicit = isexplicit;
+            ReleaseDate = releaseDate;
+        }
+        context.Albums.Add(newAlbum);
+            context.SaveChanges(); 
             /*
                break;
            case 4:   //Add a song
@@ -185,6 +189,7 @@ context.SaveChanges();
            case 11:   //Quit
                quitProgram = true;
                break; */
-        }
-   }
+    }
+
+}
 }
