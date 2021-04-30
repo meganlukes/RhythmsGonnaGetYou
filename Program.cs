@@ -145,7 +145,7 @@ namespace RhythmsGonnaGetYou
             var bandID = thisBand.ID;
             string stringExplicit = "f";
             stringExplicit = PromptForString("Is the album explicit? Y or N   ");
-            bool explicit = false;
+            bool explicit == false;
            if (stringExplicit == "Y")
         {
              explicit = true;
@@ -183,10 +183,9 @@ context.SaveChanges(); /*
                break;
            case 11:   //Quit
                quitProgram = true;
-               break; 
-       }
-   }
-*/
+               break; */
         }
-    }
-}
+   }
+
+        }
+    
