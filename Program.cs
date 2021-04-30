@@ -200,6 +200,7 @@ XXXXXXXXXX   case 3:    //Add an album
             case 7:    //View all albums for band
                 break;
             case 8:    //View all albums ordered by release date
+            
                 break;
             case 9:    //View all signed bands
                 break;
