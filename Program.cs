@@ -140,7 +140,7 @@ namespace RhythmsGonnaGetYou
               } 
              break;
 XXXXXXXXXX   case 3:    //Add an album
-           */
+           
             var title = PromptForString("What is the album's name?   ");
             var bandName = PromptForString("What is the band's name?   ");
             var thisBand = context.Bands.First(band => band.Name == bandName);
@@ -175,21 +175,39 @@ XXXXXXXXXX   case 3:    //Add an album
                break;
            case 4:   //Add a song
                break;
-           case 5:   //Change IsSigned to false
-               break;
-           case 6:   //Change IsSigned to true
-               break;
-           case 7:    //View all albums for band
-               break;
-           case 8:    //View all albums ordered by release date
-               break;
-           case 9:    //View all signed bands
-               break;
-           case 10:   //View all unsigned bands
-               break;
-           case 11:   //Quit
-               quitProgram = true;
-               break; */
+  XXXXX         case 5:   //Change IsSigned to false
+           */
+            var stringBandToChange = PromptForString("Which band would you like to unsign?   ");
+            var bandToChange = context.Bands.FirstOrDefault(band => band.Name == stringBandToChange);
+            if (bandToChange != null)
+            {
+                if (bandToChange.IsSigned != false)
+                {
+                    bandToChange.IsSigned = false;
+                }
+            }
+            /*
+                break;
+            case 6:   //Change IsSigned to true
+            var stringBandToChange = PromptForString("Which band would you like to sign?");
+            var bandToChange = context.Bands.FirstOrDefault(band => band.Name == stringBandToChange);
+            if (bandToChange != null) {
+                if (bandToChange.IsSigned != true){
+                bandToChange.IsSigned = true;
+                }
+            }
+                break;
+            case 7:    //View all albums for band
+                break;
+            case 8:    //View all albums ordered by release date
+                break;
+            case 9:    //View all signed bands
+                break;
+            case 10:   //View all unsigned bands
+                break;
+            case 11:   //Quit
+                quitProgram = true;
+                break; */
         }
 
     }
