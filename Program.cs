@@ -139,11 +139,11 @@ namespace RhythmsGonnaGetYou
               Console.WriteLine(bands.Name);
               } 
              break;
-           case 3:    //Add an album 
+XXXXXXXXXX   case 3:    //Add an album
            */
             var title = PromptForString("What is the album's name?   ");
             var bandName = PromptForString("What is the band's name?   ");
-            var thisBand = context.Bands.FirstOrDefault(band => band.Name == bandName);
+            var thisBand = context.Bands.First(band => band.Name == bandName);
             var bandID = thisBand.ID;
             string stringExplicit = "f";
             stringExplicit = PromptForString("Is the album explicit? Y or N   ");
@@ -160,16 +160,17 @@ namespace RhythmsGonnaGetYou
             var year = PromptForInteger("In what year was the album released?   ");
             var month = PromptForInteger("In what month was the album released? Use MM   ");
             var day = PromptForInteger("On what day was the album released?   ");
-            var releaseDate = new DateTime(year, month, day);
+            var releaseDateString = year + "/" + month + "/" + day;
+            var releaseDate = Convert.ToDateTime(releaseDateString);
             var newAlbum = new Album
             {
-                BandID = bandID;
-            Title = title;
-            IsExplicit = isexplicit;
-            ReleaseDate = releaseDate;
-        }
-        context.Albums.Add(newAlbum);
-            context.SaveChanges(); 
+                BandID = bandID,
+                Title = title,
+                IsExplicit = isexplicit,
+                ReleaseDate = releaseDate,
+            };
+            context.Albums.Add(newAlbum);
+            context.SaveChanges();
             /*
                break;
            case 4:   //Add a song
@@ -189,7 +190,7 @@ namespace RhythmsGonnaGetYou
            case 11:   //Quit
                quitProgram = true;
                break; */
-    }
+        }
 
-}
+    }
 }
