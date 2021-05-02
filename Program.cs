@@ -224,7 +224,7 @@ namespace RhythmsGonnaGetYou
                         Console.WriteLine("Done.");
                         break;
 
-                    //Problem
+                    //Problem!!!!!!!!!!!!!!!!!!!
                     case 7:    //View all albums for band    
 
                         var bandString = PromptForString("What is the band's name?   ");
@@ -243,8 +243,9 @@ namespace RhythmsGonnaGetYou
 
                         break;
 
-                    //Problem
+                    //Problem!!!!!!!!!!!!!!!!!!!!!
                     case 8:    //View all albums ordered by release date
+
                         var albumsByDate = album.OrderBy(tract => tract.ReleaseDate);
                         foreach (var albums in album)
                         {
@@ -255,18 +256,29 @@ namespace RhythmsGonnaGetYou
 
 
                     case 9:    //View all signed bands
+
                         var signedBands = band.Where(group => group.IsSigned == true);
                         foreach (var group in signedBands)
                         {
                             Console.WriteLine(group.Name);
                         }
 
+                        break;
+
+
+                    case 10:   //View all unsigned bands
+
+                        var unsignedBands = band.Where(group => group.IsSigned == false);
+                        foreach (var group in unsignedBands)
+                        {
+                            Console.WriteLine(group.Name);
+                        }
 
                         break;
-                    case 10:   //View all unsigned bands
-                        break;
                     case 11:   //Quit
+
                         quitProgram = true;
+
                         break;
                 }
 
