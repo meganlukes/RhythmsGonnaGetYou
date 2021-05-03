@@ -27,7 +27,7 @@ namespace RhythmsGonnaGetYou
         public Band Band { get; set; }
         public string Title { get; set; }
         public bool IsExplicit { get; set; }
-        public DateTime ReleaseDate { get; set; }
+        public DateTime? ReleaseDate { get; set; }
         public List<Song> Songs { get; set; }
     }
     class Song
@@ -76,8 +76,8 @@ namespace RhythmsGonnaGetYou
         {
             var context = new RhythmContext();
             var band = context.Bands;
-            var album = context.Albums.Include(album => album.BandID);
-            var song = context.Songs.Include(song => song.AlbumID);
+            var album = context.Albums.Include(album => album.Band);
+            var song = context.Songs.Include(song => song.Album);
 
 
             var quitProgram = false;
@@ -233,11 +233,11 @@ namespace RhythmsGonnaGetYou
                         if (requestedBand != null)
                         {
                             idOfBand = requestedBand.ID;
-                        }
-                        var bandsAlbums = album.Where(tract => tract.BandID == idOfBand);
-                        foreach (var tract in bandsAlbums)
-                        {
-                            Console.WriteLine(tract.Title);
+                            var bandsAlbums = album.Where(tract => tract.BandID == idOfBand);
+                            foreach (var tract in bandsAlbums)
+                            {
+                                Console.WriteLine(tract.Title);
+                            }
                         }
 
 
